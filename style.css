@@ -1,0 +1,297 @@
+/* ================= GLOBAL & LAYOUT ================= */
+body {
+    margin: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #4b0a15, #8f2434);
+    color: #fff;
+    min-height: 100vh;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.page.active { 
+    display: flex; 
+    opacity: 1; 
+}
+
+.content-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+/* ================= SPLIT PIN PAGE ================= */
+.pin-container {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 40px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 95%;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+
+.pin-left,
+.pin-right {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pin-left {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.modern-img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 35px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* ================= MEMORY GRID ================= */
+.memory-grid-modern {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.memory-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.memory-item img:hover { 
+    transform: scale(1.05); 
+}
+
+/* ================= FLIP CARD ================= */
+.flip-card {
+    width: 340px;
+    height: 460px;
+    perspective: 1000px;
+    margin: 30px auto 40px auto; /* kasih jarak bawah */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%; 
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner { 
+    transform: rotateY(180deg); 
+}
+
+.flip-card-front, 
+.flip-card-back {
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 35px;
+    overflow: hidden;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* supaya tidak terpotong */
+    background: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 35px;
+}
+
+.flip-card-back {
+    background: #fff;
+    color: #7a1e2c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+/* ================= PIN PAD ================= */
+.pin-display {
+    height: 60px; 
+    width: 220px;
+    background: white; 
+    border-radius: 30px;
+    color: #7a1e2c; 
+    font-size: 2.5rem;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    margin-bottom: 25px; 
+    letter-spacing: 10px;
+}
+
+.pin-pad { 
+    display: grid; 
+    grid-template-columns: repeat(3, 75px); 
+    gap: 15px; 
+}
+
+.pin-btn {
+    width: 75px; 
+    height: 75px; 
+    border-radius: 50%;
+    border: none; 
+    background: white; 
+    color: #7a1e2c;
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    cursor: pointer;
+}
+
+/* ================= BUTTONS ================= */
+.main-btn {
+    background: #c0392b; 
+    color: white;
+    padding: 15px 40px; 
+    border-radius: 40px;
+    border: none; 
+    font-size: 1.1rem; 
+    cursor: pointer;
+    margin-top: 20px; /* jarak dari card */
+}
+
+/* YES & NO jadi cream */
+.yes-btn,
+.no-btn {
+    background: #f4e6d3; /* cream */
+    color: #7a1e2c;
+    padding: 15px 40px;
+    border-radius: 40px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.no-btn {
+    margin-left: 15px;
+}
+
+.yes-btn:hover,
+.no-btn:hover {
+    transform: scale(1.05);
+}
+
+/* ================= FINAL ================= */
+.heart-animation {
+    font-size: 5rem;
+    animation: heartBeat 1.2s infinite;
+    margin: 20px 0;
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.reset-link { 
+    background: none; 
+    border: none; 
+    color: rgba(255,255,255,0.4); 
+    cursor: pointer; 
+    margin-top: 20px; 
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+    .pin-container { 
+        flex-direction: column; 
+    }
+    .pin-left,
+    .pin-right { 
+        padding: 20px; 
+    }
+
+    .flip-card {
+        width: 90%;
+        height: 420px;
+    }
+}
+
+#page-song .content-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+/* Album Image */
+.song-img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.song-img:hover {
+    transform: scale(1.05);
+}
+
+/* Play Button */
+#playBtn {
+    padding: 14px 35px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ff4e7a, #ff7b9c);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#playBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 78, 122, 0.4);
+}
+
+/* Lanjut button lebih kecil */
+#page-song .secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 25px;
+}
+

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine For You ❤</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+<!-- ================= PIN PAGE ================= -->
+<section id="page-pin" class="page">
+    <div class="pin-container">
+        <div class="pin-left">
+            <img src="assets/pin-photo.jpg" class="modern-img" alt="PIN Image">
+            <h2 class="page-title">Enter My Secret PIN baby</h2>
+            <p>Untuk seseorang yang aku sayang sayang sayang sekali</p>
+        </div>
+
+        <div class="pin-right">
+            <div id="pinDisplay" class="pin-display"></div>
+
+            <div class="pin-pad">
+                <button type="button" class="pin-btn" onclick="addNumber('1')">1</button>
+                <button type="button" class="pin-btn" onclick="addNumber('2')">2</button>
+                <button type="button" class="pin-btn" onclick="addNumber('3')">3</button>
+                <button type="button" class="pin-btn" onclick="addNumber('4')">4</button>
+                <button type="button" class="pin-btn" onclick="addNumber('5')">5</button>
+                <button type="button" class="pin-btn" onclick="addNumber('6')">6</button>
+                <button type="button" class="pin-btn" onclick="addNumber('7')">7</button>
+                <button type="button" class="pin-btn" onclick="addNumber('8')">8</button>
+                <button type="button" class="pin-btn" onclick="addNumber('9')">9</button>
+                <button type="button" class="pin-btn" onclick="clearPin()">⌫</button>
+                <button type="button" class="pin-btn" onclick="addNumber('0')">0</button>
+                <button type="button" class="pin-btn heart-btn" onclick="checkPin()">❤</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================= WRONG PAGE ================= -->
+<section id="page-wrong" class="page">
+    <div class="content-box">
+        <h2 class="page-title">PIN salah🤬🤬.</h2>
+        <p>You sure you're my baby?☹️</p>
+        <button type="button" onclick="goToPage('page-pin')" class="main-btn">Coba Lagi</button>
+    </div>
+</section>
+
+<!-- ================= CARD PAGE ================= -->
+<section id="page-card" class="page">
+    <div class="content-box card-page-wrapper">
+
+        <p class="click-text">Klik kartunya ❤</p>
+
+        <div class="flip-card" onclick="flipCard()">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="assets/card-photo.jpg" alt="Valentine Card">
+                </div>
+
+                <div class="flip-card-back">
+                    <div class="card-content">
+                        <p>
+                            Happy Valentine's Day to the person who fills my life with so much light and love, 
+                            thank you for every shared laugh, every comforting moment, and for simply being you.
+                            You are more than just my partner, you are my best friend and the greatest gift I have ever received.
+                            I am so grateful for our journey together and I look forward to creating many more beautiful memories by your side.
+                            I love you more than words can express, today and every single day.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-btn-wrapper">
+            <button id="nextAfterCard"
+                    type="button"
+                    onclick="goToPage('page-memory')"
+                    class="main-btn hidden">
+                Lanjut 
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= MEMORY PAGE ================= -->
+<section id="page-memory" class="page">
+    <div class="content-box">
+        <h2 class="page-title">My cutest baby ❤</h2>
+
+        <div class="memory-grid-modern">
+            <div class="memory-item square">
+                <img src="assets/moment1.jpeg" alt="Moment 1">
+            </div>
+
+            <div class="memory-item square">
+                <img src="assets/moment2.jpeg" alt="Moment 2">
+            </div>
+
+            <div class="memory-item square">
+                <img src="assets/moment3.jpeg" alt="Moment 3">
+            </div>
+        </div>
+
+        <button type="button" onclick="goToPage('page-song')" class="main-btn">Lanjut</button>
+    </div>
+</section>
+
+<!-- ================= SONG PAGE ================= -->
+<section id="page-song" class="page">
+    <div class="content-box">
+        <h2 class="page-title">Song For You 🎵</h2>
+
+        <img src="assets/song-photo.jpg" class="modern-img song-img" alt="Song Image">
+
+        <audio id="song">
+    <source src="assets/your-song.mp3" type="audio/mpeg">
+</audio>
+
+<button type="button" id="playBtn" class="main-btn">
+    ▶ Play Song
+</button>
+<button type="button" onclick="goToPage('page-question')" class="main-btn secondary">Lanjut</button>
+    </div>
+</section>
+
+<!-- ================= QUESTION PAGE ================= -->
+<section id="page-question" class="page">
+    <div class="content-box">
+        <h2 class="page-title">Wanna be my Valentine? ❤</h2>
+
+        <div class="btn-row">
+            <button id="yesBtn" type="button" class="yes-btn" onclick="sayYes()">Yes ❤</button>
+            <button id="noBtn" type="button" class="no-btn" onclick="growYes()">No 😢</button>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FINAL PAGE ================= -->
+<section id="page-final" class="page">
+    <div class="content-box final-box">
+        <h1 class="final-title">YEAYYY! ❤</h1>
+        <h2 class="page-title">I Love You So Much!</h2>
+        <div class="heart-animation">❤</div>
+        <button type="button" onclick="resetApp()" class="reset-link">Mulai dari Awal</button>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
